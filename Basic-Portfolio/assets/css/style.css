@@ -1,0 +1,59 @@
+header {
+	width: 100%;
+	border: 1px solid #cccccc;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Georgia', Times, Times New Roman, serif;
+	color: #4aaaa5;
+}
+.navLinks, p , footer {
+	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+	color: #777777;
+}
+.flexContainer1 {
+	display: flex;
+	width: 75%;
+	margin: auto;
+}
+.profileName {
+	padding: 2.5%;
+	background-color: #4aaaa5;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	flex:1;
+
+}
+.navigation {
+	flex:4;
+	text-align: right;
+	padding-top: 2%;
+}
+.navigation li {
+	display: inline;
+	border-right: 1px solid #4aaaa5;
+	padding:0 3% 0 3%;
+}
+.navLinks {
+	text-decoration: none;
+	color: #4aaaa5;
+	/*margin-right: 6%;*/
+}
+.navigation ul li:nth-child(3) {
+	padding-right: 0;
+	border-right: 0;
+}
+main {
+	width: 100%;
+}
+.flexContainer2 {
+	display: flex;
+	width: 75%;
+	margin: auto;
+}
+.portfolioPic {
+	float: left;
+	width: 40%;
+	margin:0 5% 5% 0;
+}
