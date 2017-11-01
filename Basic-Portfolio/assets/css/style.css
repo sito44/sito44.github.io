@@ -51,7 +51,7 @@ h2 {
 }
 main {
 	width: 100%;
-	background-image: url(./assets/images/greyzz_@2X.png); 
+	background-image: url("./assets/images/greyzz_@2X.png"); 
 }
 .flexContainer2 {
 	display: flex;
