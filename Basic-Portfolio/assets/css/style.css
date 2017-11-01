@@ -51,16 +51,18 @@ h2 {
 }
 main {
 	width: 100%;
-	background-image: url("./assets/images/greyzz_@2X.png"); 
+	background-image: url('');
 }
 .flexContainer2 {
 	display: flex;
 	max-width:960px;
 	margin: auto;
+	padding-top: 2%;
 }
 section {
 	flex: 6;
 	padding: 2%;
+	background-color: white; 
 }
 .portfolioPic {
 	float: left;
