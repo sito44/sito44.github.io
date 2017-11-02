@@ -83,8 +83,10 @@ main {
 section {
 	flex: 6;
 	max-width: 650px;
+	margin-bottom: 5%;
 	padding: 3%;
-	background-color: white; 
+	background-color: white;
+	overflow-y: auto; 
 }
 section p {
 	line-height: 1.5;  
@@ -152,7 +154,7 @@ footer {
 	background-color: #666666;
 	color: white;
 	text-align: center;
-	padding: 3% 0 1% 0;
+	padding: 2% 0 1% 0;
 	margin-top: 2%;
 	position: fixed;
 	bottom:0;
