@@ -83,7 +83,7 @@ main {
 section {
 	flex: 6;
 	max-width: 650px;
-	margin-bottom: 10%;
+	margin-bottom: 15%;
 	padding: 3%;
 	background-color: white;
 	overflow-y: auto; 
