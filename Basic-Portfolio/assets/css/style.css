@@ -31,6 +31,7 @@ aside hr {
 	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
 	color: #777777;
 }
+/*------------------------------------------------------------Navigation*/
 .flexContainer1 {
 	display: flex;
 	max-width:960px;
@@ -72,6 +73,7 @@ main {
 	width: 100%;
 	position: relative;
 }
+/*---------------------------------------------------------------Section*/
 .flexContainer2 {
 	display: flex;
 	max-width:960px;
@@ -94,6 +96,7 @@ section p {
 	margin:0 5% 2% 0;
 	padding-top: 1%;
 }
+/*------------------------------------------------------------------Aside*/
 aside {
 	flex: 1;
 	max-width: 270px;
@@ -106,6 +109,44 @@ aside li {
 	display: inline;
 	margin-right: 2%;
 }
+/*---------------------------------------------------------------Sprites*/
+.socialLinks1 {
+	padding: 13.9%;
+	width: 26%;
+	display: inline-block;
+	background-position: 89% 73.6%;
+	background-size: 900px;
+	background-image: url('https://static.vecteezy.com/system/resources/previews/000/095/039/original/vector-free-social-media-icons.jpg');
+}
+.socialLinks1:hover {
+	background-position: 89% 38.2%;
+	display: inline-block;
+}
+.socialLinks2 {
+	padding: 14.06%;
+	width: 26%;
+	display: inline-block;
+	background-position: 62.8% 14.8%;
+	background-size: 900px;
+	background-image: url('https://static.vecteezy.com/system/resources/previews/000/095/039/original/vector-free-social-media-icons.jpg');
+}
+.socialLinks2:hover {
+	background-position: 62.8% 50.1%;
+	display: inline-block;
+}
+.socialLinks3 {
+	padding: 13.9%;
+	width: 26%;
+	display: inline-block;
+	background-position: 97.7% 3%;
+	background-size: 900px;
+	background-image: url('https://static.vecteezy.com/system/resources/previews/000/095/039/original/vector-free-social-media-icons.jpg');
+}
+.socialLinks3:hover {
+	background-position: 97.7% 38.2%;
+	display: inline-block;
+}
+/*-------------------------------------------------------------stickyFooter*/
 footer {
 	width: 100%;
 	background-color: #666666;
