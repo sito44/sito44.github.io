@@ -42,16 +42,14 @@ aside hr {
 	padding: 0;
 }
 .navbar-brand {
-	padding: 2.5%;
+	padding: 3%;
 	background-color: #4aaaa5;
 	color: white;
 	font-size: 22px;
 	font-weight: bold;
 	letter-spacing: 1px;
 }
-.nav-link {
-	margin-left: 3%;
-}
+
 /*.flexContainer1 {
 	display: flex;
 	max-width:960px;
@@ -121,7 +119,7 @@ section p {
 	margin:0 5% 2% 0;
 	padding-top: 1%;
 }
-/*
+
 .portfolioProjectPics {
 	width: 44%;
 	margin: 1% 4% 4% 0;
@@ -129,6 +127,7 @@ section p {
 section:nth-child(2), section:nth-child(4) {
 	margin-right: 0;
 }
+
 input, textarea {
 	display: block;
 	margin: 1% 0 3% 0;
@@ -141,14 +140,14 @@ button {
 	background-color: #4aaaa5;
 	padding: 1% 3% 1% 3%;
 	color: white; 
-}*/
+}
 /*------------------------------------------------------------------Aside*/
 aside {
 	/*flex: 1;
 	max-width: 270px;*/
 	padding: 3%;
 	background-color: white;
-	margin:4% 0 0 5%;
+	margin:4% 0 0 0%;
 	max-height: 180px; 
 }
 
@@ -158,7 +157,7 @@ aside li {
 }
 .socialLinks{
 	
-	width: 30%;
+	width: 20%;
 	display: inline-block;
 	
 	
@@ -197,6 +196,10 @@ aside hr {
 	padding: 5% 0 5% 0;
 }
 */
+.bootMarginAdjust {
+	width: 94.5%;
+	margin: auto;
+}
 .portfolioPic {
 	margin-bottom: 5%;
 	float: none;
@@ -208,11 +211,14 @@ aside hr {
 	padding: 3% 0 3% 0;
 	margin-right: 5%;
 }
+*/
 .navLinks {
-	font-size: 12px;
+	/*font-size: 12px;
 	text-align: center;
-	padding: 0 4% 0 4%;
+	padding: 0 4% 0 4%;*/
+	padding-top: 6%;
 }
+/*
 .navigation li {
 	display: inline;
 	border-right: 1px solid #4aaaa5;
@@ -250,7 +256,12 @@ aside {
 
 }
 /*Tablet and desktop resolutions*/
-@media screen and (min-width: 768px) and (max-width: 979px) {
+@media screen and (min-width: 768px) {
+
+.bootMarginAdjust {
+	width: 81.2%;
+	margin: auto;
+}
 /*	
 .flexContainer1 {
 		margin: auto;
@@ -299,12 +310,14 @@ aside {
 	border-right: 1px solid #4aaaa5;
 	padding:0 3% 0 3%;
 }
-.navLinks {
-	text-decoration: none;
-	color: #4aaaa5;
-	font-size: 14px;
-}
 */
+.navLinks {
+	/*text-decoration: none;
+	color: #4aaaa5;
+	font-size: 14px;*/
+	padding-top: 4%;
+}
+
 .socialLinks {
 	width: 28%;
 	
@@ -315,6 +328,13 @@ aside {
 }*/
 
 @media screen and (min-width: 980px) {
+.navbar-nav {
+	margin-left: 65.5%;
+}
+.bootMarginAdjust {
+	width: 81.2%;
+	margin: auto;
+}
 /*
 .flexContainer1 {
 	max-width: 720px;
@@ -344,11 +364,23 @@ aside {
 
 }
 */
+.navLinks {
+	padding-left: 15%;
+}
 .socialLinks {
 	width: 20%;
 	
 }
-form {
+/*form {
 	max-width: 620px;
+}*/	
+}
+@media screen and (min-width: 1366px) {
+.bootMarginAdjust {
+	width: 72.5%;
+	margin: auto;
+}
+.navbar-nav {
+	margin-left: 72.6%;
 }	
 }
