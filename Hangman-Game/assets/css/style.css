@@ -1,12 +1,13 @@
 body {
 	width: 100%;
-	background-image: url('https://www.caribbeannationalweekly.com/wp-content/uploads/2016/05/o-NOOSE-facebook.jpg');
+	font-family: monospace;
+	background-image: url('http://www.wallpapersin4k.org/wp-content/uploads/2017/04/White-Theme-Wallpaper-1.jpg');
 }
 header {
 	margin-bottom: 3%;
 }
 main {
-	height:600px;
+	
 	font-size: 3em;
 }
 main:nth-child(2) {
@@ -15,5 +16,5 @@ main:nth-child(2) {
 section {
 	background-color: white;
 	opacity: .8;
-	border: 1px solid #ecda41;
+	border: 3px dashed black;
 }
