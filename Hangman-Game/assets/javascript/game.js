@@ -16,18 +16,20 @@ var techWords = [
 var turn = 6;
 var currentWord = randomWordGenerator();
 var totalUnderscore = [];
-var printedUnderScores;
+var printed;
 var letter;
-var CharacterAt;
+
+var indices;
 var wordLength = currentWord.length;
 console.log(currentWord);
 console.log(underScoreGenerator(currentWord));
-console.log(CharacterAt);
+
 
 
 document.onkeyup = function(event) {
         letter = event.key;
         console.log(letter);
+        console.log(findIndices(currentWord));
         letterCheckerAndPrint(letter);
       };
 
@@ -47,32 +49,41 @@ function underScoreGenerator(currentWord) {
 		for (var i = 0; i < multiple; i++) {
 			totalUnderscore.push(underScore);
 		}
-		 	printedUnderScores = totalUnderscore.join(' ');
-			console.log(totalUnderscore);
-			$('hangWord').textContent = printedUnderScores;
-		
-
-
+		printToScreen();
+}
+function findIndices(word) {
+		indices = [];
+	for(var i = 0; i < word.length; i++) {
+    	if (word[i] === letter) indices.push(i);
+    }
+    return indices;
 }
 
+
+function printToScreen()	{
+	 		printed = totalUnderscore.join(' ');
+			$('hangWord').textContent = printed;
+}
 function letterCheckerAndPrint(letter) {
 	for ( var index in currentWord) {
+			
+
 		if (index = letter) {
-			CharacterAt = currentWord.indexOf(letter);
-			console.log(CharacterAt);
-			totalUnderscore.splice(CharacterAt, CharacterAt + 1,letter);
+			
+		for (var r in indices) {
+			delete totalUnderscore[indices[r]];
+			totalUnderscore[indices[r]] = letter;
+		}
+			printToScreen();
 			console.log(totalUnderscore);
 			break;
-			/*printedUnderScores = printedUnderScores.splice(CharacterAt,CharacterAt + 1, letter);
-			$('hangWord').textContent = printedUnderScores;*/
 			
 		} else if (index != letter){
-			turn = turn - 1;
-			$('turns').textContent = turn;
+			$('turns').textContent = turn - 1;
 			break;
 		}
 
 	}
 }
-console.log();
+
 			
