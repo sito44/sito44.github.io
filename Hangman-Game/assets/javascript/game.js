@@ -12,15 +12,15 @@ var techWords = [
 	'methods', 
 	'recursion', 
 	'closures'];
-
-var turn = 6;
+var win = 0;
+var turn = 7;
 var currentWord = randomWordGenerator();
 var totalUnderscore = [];
 var printed;
 var letter;
-
 var indices;
-var wordLength = currentWord.length;
+var found;
+
 console.log(currentWord);
 console.log(underScoreGenerator(currentWord));
 
@@ -31,6 +31,7 @@ document.onkeyup = function(event) {
         console.log(letter);
         console.log(findIndices(currentWord));
         letterCheckerAndPrint(letter);
+         
       };
 
 function $(id) {
@@ -49,41 +50,71 @@ function underScoreGenerator(currentWord) {
 		for (var i = 0; i < multiple; i++) {
 			totalUnderscore.push(underScore);
 		}
+
 		printToScreen();
 }
-function findIndices(word) {
+
+function findIndices(indicesInWord) {
 		indices = [];
-	for(var i = 0; i < word.length; i++) {
-    	if (word[i] === letter) indices.push(i);
+	for(var i = 0; i < indicesInWord.length; i++) {
+    	if (indicesInWord[i] === letter) indices.push(i);
     }
     return indices;
 }
 
 
 function printToScreen()	{
-	 		printed = totalUnderscore.join(' ');
-			$('hangWord').textContent = printed;
-}
-function letterCheckerAndPrint(letter) {
-	for ( var index in currentWord) {
-			
+		printed = totalUnderscore.join(' ');
+		$('hangWord').textContent = printed;
 
-		if (index = letter) {
+			if (found === true) {
+	 			printed = totalUnderscore.join(' ');
+				$('hangWord').textContent = printed;
+				
+			} else if (found === false){
+				turn -= 1;
+				$('turns').textContent = turn;
+			} else if (printed == currentWord) {
+				win += 1;
+				$('wins').textContent = win;
+			}
+}
+
+function letterCheckerAndPrint(x) {
+
+	
+	
+	for (var w = 0; w < currentWord.length; w++) {
+			 	
+
+		if (currentWord[w] === x || found === false) {
+			found = true;
+			for (var r in indices) {
+				delete totalUnderscore[indices[r]];
+				totalUnderscore[indices[r]] = x;
+				console.log(r);
+			}
+				break;
+				console.log(totalUnderscore);
+				
 			
-		for (var r in indices) {
-			delete totalUnderscore[indices[r]];
-			totalUnderscore[indices[r]] = letter;
-		}
-			printToScreen();
-			console.log(totalUnderscore);
-			break;
+		} else if (currentWord[w] !== x || found === true) {
 			
-		} else if (index != letter){
-			$('turns').textContent = turn - 1;
-			break;
+			found = false;
 		}
+			break;
 
 	}
+				printToScreen();
 }
 
+switch(turn) {
+	case 0:
+			$('hangman').innerHTML = '<img src="./assets/images/hangman.jpg" alt="hangman">';
+		break;
+	case 1:
+			$('hangman').innerHTML = '<img src="./assets/images/hangman.jpg" alt="hangman">';
+		break;	
+}
+console.log(currentWord);
 			
