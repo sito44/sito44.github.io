@@ -14,12 +14,13 @@ var techWords = [
 	'closures'];
 var win = 0;
 var turn = 7;
+var pointCondition;
 var currentWord = randomWordGenerator();
 var totalUnderscore = [];
 var printed;
 var letter;
 var indices;
-var found;
+
 
 console.log(currentWord);
 console.log(underScoreGenerator(currentWord));
@@ -63,15 +64,15 @@ function findIndices(indicesInWord) {
 }
 
 
-function printToScreen()	{
+function printToScreen(z)	{
 		printed = totalUnderscore.join(' ');
 		$('hangWord').textContent = printed;
 
-			if (found === true) {
+			if (z === true) {
 	 			printed = totalUnderscore.join(' ');
 				$('hangWord').textContent = printed;
 				
-			} else if (found === false){
+			} else if (z === false){
 				turn -= 1;
 				$('turns').textContent = turn;
 			} else if (printed == currentWord) {
@@ -82,31 +83,41 @@ function printToScreen()	{
 
 function letterCheckerAndPrint(x) {
 
-	
+			var found = false;	
+			pointCondition = found;
 	
 	for (var w = 0; w < currentWord.length; w++) {
-			 	
 
-		if (currentWord[w] === x || found === false) {
+		if (currentWord[w] === x && found === false) {
+			
 			found = true;
 			for (var r in indices) {
 				delete totalUnderscore[indices[r]];
 				totalUnderscore[indices[r]] = x;
 				console.log(r);
 			}
-				break;
+				
 				console.log(totalUnderscore);
 				
 			
-		} else if (currentWord[w] !== x || found === true) {
+		} else if (currentWord[w] !== x && found === true) {
 			
 			found = false;
 		}
-			break;
+			
 
 	}
-				printToScreen();
+				printToScreen(pointCondition);
 }
+
+
+console.log(currentWord);
+
+/*
+
+Psuedo code
+
+-----switch statment changes between hangman images when turn variable decreases.
 
 switch(turn) {
 	case 0:
@@ -114,7 +125,40 @@ switch(turn) {
 		break;
 	case 1:
 			$('hangman').innerHTML = '<img src="./assets/images/hangman.jpg" alt="hangman">';
-		break;	
+		break;
+
+		etc....	
 }
-console.log(currentWord);
+
+-----add pushed keys to the UI
+
+var usedLetters = [];
+usedLetters.push(letter);
+var usedLetterElement = $('hangLetters');
+usedLetterElement.textContent = usedLetters.
+
+
+------win and lose logic
+
+if (currentWord === printed) {
+	win += 1;
+	randomWordGenerator();
+} else if (turns === 0){
+	alert('you lose');
+	refreshBrowser();
+}
+
+
+
+var gameObject = {
+	....all functions of game
+}
+
+*/
+
+
+
+
+
+
 			
