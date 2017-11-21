@@ -1,0 +1,30 @@
+body {
+	background-image: url("../images/starwarsBG.jpg");
+	background-repeat: no-repeat;;
+	width: 100%;
+	font-family: 'Monaco', san-serif;
+}
+h1, h2,h3, h4 {
+	margin: auto;
+	text-align: center;
+	padding-top: 1%;
+	color: white;
+}
+button {
+	text-align: center;
+	margin-left: 48%;
+}
+div {
+	margin-top: 2%;
+}
+img {
+	width: 100%;
+}
+p {
+	text-align: center;
+	color: white;
+}
+.playerBox {
+	border: 3px solid yellow;
+	background-color: gray;
+}

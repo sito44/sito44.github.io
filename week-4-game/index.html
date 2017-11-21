@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="./assets/css/normalize.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="./assets/js/game.js"></script>
+	<title>Star Wars Game</title>
+
+</head>
+<body>
+	
+	<h1>Star Wars RPG</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm playerBox" id="chr1">
+				<h4>Obi Wan</h4>
+				<img src="./assets/images/obiWan.jpg" alt="obiwan">
+				<p id="chr1Points">120</p>
+			</div>
+			<div class="col-sm playerBox" id="chr2">
+				<h4>Mace Windu</h4>
+				<img src="./assets/images/maceWindu.jpg" alt="mace windu">
+				<p id="chr2Points">140</p>
+			</div>
+			<div class="col-sm playerBox" id="chr3">
+				<h4>Darth Vader</h4>
+				<img src="./assets/images/darthVader.jpg" alt="darth vader">
+				<p id="chr3Points">200</p>
+			</div>
+			<div class="col-sm playerBox" id="chr4">
+				<h4>General Grevous</h4>
+				<img src="./assets/images/generalGrievous.jpg" alt="general grievous">
+				<p id="chr4Points">180</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6" id="yourPlayer">
+				<h3>Your Character</h3>
+			</div>
+			<div class="col-md-6" id="defender">
+				<h3>Defender</h3>
+			</div>
+		</div>
+	</div>
+	<div id="remandingEnemies">
+		<h2>Enemies Availble To Attack</h2>
+	</div>
+	<div>
+		<h2>Fight Section</h2>
+		<p id="fightInfo"></p>
+	</div>
+	<div><button type="button">Attack</button></div>
+</body>
+</html>
