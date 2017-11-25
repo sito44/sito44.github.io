@@ -16,47 +16,52 @@
 <body>
 	
 	<h1>Star Wars RPG</h1>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm playerBox" id="chr1">
+	<div class="container" id="players">
+		<div class="row" id="otherPlayers">
+			<div class="col-sm-3 playerBox" id="chr1">
 				<h4>Obi Wan</h4>
 				<img src="./assets/images/obiWan.jpg" alt="obiwan">
-				<p id="chr1Points">120</p>
+				<p id="chr1Points">160</p>
 			</div>
-			<div class="col-sm playerBox" id="chr2">
+			<div class="col-sm-3 playerBox" id="chr2">
 				<h4>Mace Windu</h4>
 				<img src="./assets/images/maceWindu.jpg" alt="mace windu">
-				<p id="chr2Points">140</p>
+				<p id="chr2Points">180</p>
 			</div>
-			<div class="col-sm playerBox" id="chr3">
+			<div class="col-sm-3 playerBox" id="chr3">
 				<h4>Darth Vader</h4>
 				<img src="./assets/images/darthVader.jpg" alt="darth vader">
-				<p id="chr3Points">200</p>
+				<p id="chr3Points">220</p>
 			</div>
-			<div class="col-sm playerBox" id="chr4">
+			<div class="col-sm-3 playerBox" id="chr4">
 				<h4>General Grevous</h4>
 				<img src="./assets/images/generalGrievous.jpg" alt="general grievous">
-				<p id="chr4Points">180</p>
+				<p id="chr4Points">200</p>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6" id="yourPlayer">
+			<div class="col-md-6" >
 				<h3>Your Character</h3>
+				<div id="yourPlayer"></div>
 			</div>
-			<div class="col-md-6" id="defender">
+			<div class="col-md-6">
 				<h3>Defender</h3>
+				<div id="defender"></div>
 			</div>
 		</div>
 	</div>
-	<div id="remandingEnemies">
+	<div class="container">
 		<h2>Enemies Availble To Attack</h2>
+		<div id="remandingEnemies"></div>
+
 	</div>
-	<div>
 		<h2>Fight Section</h2>
-		<p id="fightInfo"></p>
+	<div id="fightInfo" class="fightSec">
+		
 	</div>
-	<div><button type="button">Attack</button></div>
+	<div><button type="button">Begin</button></div>
+	
 </body>
 </html>

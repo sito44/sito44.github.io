@@ -13,6 +13,7 @@ h1, h2,h3, h4 {
 button {
 	text-align: center;
 	margin-left: 48%;
+
 }
 div {
 	margin-top: 2%;
@@ -27,4 +28,12 @@ p {
 .playerBox {
 	border: 3px solid yellow;
 	background-color: gray;
+}
+.enemiesReady {
+	background-color: red;
+}
+.fightSec {
+	text-align: center;
+	color: white;
+	font-size: 18px;
 }
