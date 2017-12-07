@@ -1,9 +1,15 @@
 'use strict';
 $(function() {
-
+var timer = $('#timerDisplay');
 var quizContainer = $('#quiz');
 var quizResultsContainer = $('#results');
 var startBtn = $('#start');
+var submitBtn = $('#submit');
+var retryBtn = $('#retry');
+var totalTime = 121;
+var clockRunning = false;
+var intervalCount;
+
 var myQuestions = [
 {
 
@@ -31,13 +37,47 @@ var myQuestions = [
 
 startBtn.on("click", function(){
 
-	generateQuestion();	
+	btnDisplay();
+	generateQuestion();
+	quizTimer();	
 });
 
+function btnDisplay() {
+	startBtn.hide();
+	timer.show();
+	submitBtn.show();
+}
 function quizTimer() {
 
-}
+	
+	totalTime = totalTime - 1;
+	if (!clockRunning) {
 
+		intervalCount = setInterval(quizTimer, 1000);
+		clockRunning = true;
+	}
+	if (totalTime === 0) {
+		clearInterval(intervalCount);
+	}
+	timer.html(timePrettifier(totalTime));
+console.log(totalTime);
+}
+function timePrettifier(num) {
+	var minutes = Math.floor(num / 60);
+	var seconds = num - (minutes * 60);
+
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}
+	if (minutes === 0) {
+      minutes = "00";
+
+    } else if (minutes < 10) {
+
+      minutes = "0" + minutes;
+    }
+    return minutes + ":" + seconds;
+}
 function generateQuestion() {
 	
 	for (var i = 0; i < myQuestions.length; i++) {
@@ -53,10 +93,10 @@ function generateQuestion() {
 	var qInjection = 
 
 	"<h3>" + q + "</h3>" + 
-	"<input type='radio' value='" + a1 + "'>" + "<span>" + a1 + "</span><br>" +
-	"<input type='radio' value='" + a2 + "'>" + "<span>" + a2 + "</span><br>" +
-	"<input type='radio' value='" + a3 + "'>" + "<span>" + a3 + "</span><br>" +
-	"<input type='radio' value='" + a4 + "'>" + "<span>" + a4 + "</span><br>"
+	"<input type='radio' name='selection" + [i] + "' value='" + a1 + "'>" + "<span>" + a1 + "</span><br>" +
+	"<input type='radio' name='selection" + [i] + "' value='" + a2 + "'>" + "<span>" + a2 + "</span><br>" +
+	"<input type='radio' name='selection" + [i] + "' value='" + a3 + "'>" + "<span>" + a3 + "</span><br>" +
+	"<input type='radio' name='selection" + [i] + "' value='" + a4 + "'>" + "<span>" + a4 + "</span><br>"
 	;
 console.log(qInjection);
 
