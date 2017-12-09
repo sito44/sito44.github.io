@@ -6,6 +6,7 @@ var quizResultsContainer = $('#results');
 var startBtn = $('#start');
 var submitBtn = $('#submit');
 var retryBtn = $('#retry');
+var gif = $('#gifImage');
 var totalTime = 121;
 var clockRunning = false;
 var intervalCount;
@@ -36,6 +37,105 @@ var myQuestions = [
 	},
 	correctAnswer: "Mr. Smith"
 
+},
+{
+	question: "Who is the leader of the human rebellion?",
+	answers: {
+		a: "caprinicus",
+		b: "general latus",
+		c: "morpheus",
+		d: "darren bronz"
+	},
+	correctAnswer: "morpheus"
+
+},
+{
+	question: "What is the name of the last human city?",
+	answers: {
+		a: "zion",
+		b: "brelion",
+		c: "capitol mintis",
+		d: "xenzna"
+	},
+	correctAnswer: "zion"
+
+},
+{
+	question: "Who must the team of rebel hackers recruit to find the architect?",
+	answers: {
+		a: "the AI ghost",
+		b: "the key maker",
+		c: "psychic twins",
+		d: "atimon"
+	},
+	correctAnswer: "the key maker"
+
+},
+{
+	question: "Who is the duel ego of the architect?",
+	answers: {
+		a: "the woman in the red dress",
+		b: "sharalin",
+		c: "megabit's mother",
+		d: "the oracle"
+	},
+	correctAnswer: "the oracle"
+
+},
+{
+	question: "What are the machines called that patrol the surface?",
+	answers: {
+		a: "octoborgs",
+		b: "sentinels",
+		c: "vinzerds",
+		d: "harvesters"
+	},
+	correctAnswer: "sentinels"
+
+},
+{
+	question: "What is the name of morpheus's ship?",
+	answers: {
+		a: "nebuchadnezzar",
+		b: "Logos",
+		c: "stratus",
+		d: "hover giant"
+	},
+	correctAnswer: "nebuchadnezzar"
+
+},
+{
+	question: "Who betrays the team of rebels when they are plugged into the matrix?",
+	answers: {
+		a: "apoc",
+		b: "dozer",
+		c: "merovingian",
+		d: "cypher"
+	},
+	correctAnswer: "cypher"
+
+},
+{
+	question: "what color pill must you take to wake up from the matrix?",
+	answers: {
+		a: "blue",
+		b: "silver",
+		c: "red",
+		d: "gold"
+	},
+	correctAnswer: "red"
+
+},
+{
+	question: "what does neo need to come back to life?",
+	answers: {
+		a: "the combined willpower of the team",
+		b: "the reboot software",
+		c: "a freed mind",
+		d: "trinitys love"
+	},
+	correctAnswer: "trinitys love"
+
 }
 ];
 
@@ -47,11 +147,22 @@ startBtn.on("click", function(){
 });
 
 submitBtn.on("click", function(){
-
+	clearInterval(intervalCount);
 	scoreGenerator();
-	console.log(correct + " " + incorrect);
+	submitBtn.hide();
+	for (var r = 0; r < myQuestions.length; r++) {
+	if (selectedAnswersArray[r] !== correctAnswersArray[r]) {
+		retryBtn.show();
+		gif.html('<img src="./assets/images/matrixJump.gif" alt="NeoLoses">');
+	}
+}
+	if (correct == myQuestions.length) {
+		alert('100% correct......follow the white rabbit...');
+		gif.html('<img src="./assets/images/matrixFight.gif" alt="NeoWins">');
+	}
 
 });
+retryBtn.on("click", quizRefresh);
 
 function btnDisplay() {
 	startBtn.hide();
@@ -68,7 +179,10 @@ function quizTimer() {
 		clockRunning = true;
 	}
 	if (totalTime === 0) {
+		gif.html('<img src="./assets/images/matrixBug.gif" alt="NeoLoses">');
 		scoreGenerator();
+		retryBtn.show();
+		submitBtn.hide();
 		clearInterval(intervalCount);
 	}
 	timer.html(timePrettifier(totalTime));
@@ -139,7 +253,22 @@ function scoreGenerator() {
 	quizResultsContainer.append(resultsString);
 	
 }
+function quizRefresh() {
 
+	quizContainer.empty();
+	quizResultsContainer.empty();
+	retryBtn.hide();
+	timer.hide();
+	startBtn.show();
+	correct = 0;
+	incorrect = 0;
+	totalTime = 121;
+	clockRunning = false;
+	correctAnswersArray = [];
+	selectedAnswersArray = [];
+	gif.empty();
+
+}
 
 
 });
