@@ -4,7 +4,7 @@ $(function() {
     // API Key iOM9JW08IZGUoafA81f21vLOld9Jrruy
     var btnContainer = $('#buttonContainer');
     var gifContainer = $('#gifContainer');
-    var instrumentTheme = ['guitar', 'piano', 'bass guitar', 'drums', 'vocals'];
+    var instrumentTheme = ['guitar', 'piano', 'bass guitar', 'drums', 'vocals', 'saxophone', 'cello', 'harp', 'violin'];
     var responseArray;
 
     function createButtons() {
@@ -86,6 +86,10 @@ $(function() {
     }
     $('#searchSubmit').on("click", function(event) {
         event.preventDefault();
+        if ($('#searchGifs').val() === "") {
+            return
+        }
+
         addButton();
         $('#searchGifs').val("");
     });
