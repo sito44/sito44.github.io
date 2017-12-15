@@ -1,10 +1,10 @@
+'use strict';
 $(function() {
 
     // API Key iOM9JW08IZGUoafA81f21vLOld9Jrruy
-    'use strict';
     var btnContainer = $('#buttonContainer');
     var gifContainer = $('#gifContainer');
-    var instrumentTheme = ['guitar', 'piano', 'bass guitar', 'drums', ];
+    var instrumentTheme = ['guitar', 'piano', 'bass guitar', 'drums', 'vocals'];
     var responseArray;
 
     function createButtons() {
@@ -13,7 +13,6 @@ $(function() {
             var btn = $('<button>');
             btn.addClass('btnHandler');
             btn.text(instrument);
-            console.log(btn);
             btnContainer.append(btn);
 
         }
@@ -43,9 +42,9 @@ $(function() {
 
             gifContainer.empty();
             responseArray = response.data;
-console.log(responseArray);
+
             for (var gifData of responseArray) {
-                console.log(responseArray);
+
                 var stillImg = gifData.images.fixed_width_still.url;
                 var gifImg = gifData.images.fixed_width.url;
                 var imgContainer = $('<div>');
@@ -64,6 +63,7 @@ console.log(responseArray);
                 gifContainer.append(imgContainer);
 
             }
+
             $('.imgHandler').on('click', function() {
 
                 var state = $(this).attr("data-state");
@@ -87,11 +87,13 @@ console.log(responseArray);
     $('#searchSubmit').on("click", function(event) {
         event.preventDefault();
         addButton();
+        $('#searchGifs').val("");
     });
-    $('#clearData').on("click", function(event){
-    	event.preventDefault();
-    	btnContainer.empty();
-    	gifContainer.empty();
-    	instrumentTheme = [];
+    $('#clearData').on("click", function(event) {
+        event.preventDefault();
+        btnContainer.empty();
+        gifContainer.empty();
+        $('#searchGifs').val("");
+        instrumentTheme = [];
     });
 });
