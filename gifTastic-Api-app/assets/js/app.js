@@ -7,15 +7,18 @@ $(function() {
     var instrumentTheme = ['guitar', 'piano', 'bass guitar', 'drums', ];
     var responseArray;
 
-    for (var instrument of instrumentTheme) {
-        var btn = $('<button>');
-        btn.addClass('btnHandler');
-        btn.text(instrument);
-        console.log(btn);
-        btnContainer.append(btn);
+    function createButtons() {
+        btnContainer.empty();
+        for (var instrument of instrumentTheme) {
+            var btn = $('<button>');
+            btn.addClass('btnHandler');
+            btn.text(instrument);
+            console.log(btn);
+            btnContainer.append(btn);
 
+        }
     }
-
+    createButtons();
     $('#buttonContainer').on("click", ".btnHandler", apiCall);
 
 
@@ -40,7 +43,7 @@ $(function() {
 
             gifContainer.empty();
             responseArray = response.data;
-
+console.log(responseArray);
             for (var gifData of responseArray) {
                 console.log(responseArray);
                 var stillImg = gifData.images.fixed_width_still.url;
@@ -76,4 +79,19 @@ $(function() {
 
     }
 
+    function addButton() {
+        var newSearchTerm = $('#searchGifs').val();
+        instrumentTheme.push(newSearchTerm);
+        createButtons();
+    }
+    $('#searchSubmit').on("click", function(event) {
+        event.preventDefault();
+        addButton();
+    });
+    $('#clearData').on("click", function(event){
+    	event.preventDefault();
+    	btnContainer.empty();
+    	gifContainer.empty();
+    	instrumentTheme = [];
+    });
 });
