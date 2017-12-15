@@ -87,7 +87,7 @@ $(function() {
     $('#searchSubmit').on("click", function(event) {
         event.preventDefault();
         if ($('#searchGifs').val() === "") {
-            return
+            return;
         }
 
         addButton();
