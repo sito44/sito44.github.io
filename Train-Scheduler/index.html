@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Train-Schedule</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="./assets/js/app.js"></script>
+</head>
+
+<body>
+    <main id="test">
+        <h1>Anytime is Train Time</h1>
+        <table>
+            <h3>Current Train Schedule</h3>
+            <thead>
+                <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency</th>
+                    <th>Next Arrival</th>
+                    <th>Minutes Away</th>
+                </tr>
+            </thead>
+            <tbody id="trainTable"></tbody>
+        </table>
+        <form>
+            <h3>Add Train</h3>
+            <label for="train">Train Name</label>
+            <input type="text" name="train" id="trainName">
+            <label for="destination">Destination</label>
+            <input type="text" name="destination" id="destination">
+            <label for="firstTrain">First Train Time</label>
+            <input type="text" name="firstTrain" id="firstTrainTime">
+            <label for="frequency">Frequency</label>
+            <input type="text" name="frequency" id="frequency">
+            <button id="addTrain">Submit</button>
+        </form>
+    </main>
+</body>
+
+</html>

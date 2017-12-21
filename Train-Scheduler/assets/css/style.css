@@ -1,0 +1,32 @@
+input {
+    display: block;
+    margin: 1% 0 1% 0;
+    width: 100%;
+}
+
+main {
+    margin: auto;
+    max-width: 75%;
+}
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    background-color: navy;
+    color: white;
+    padding: 1%;
+    width: 100%;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+table {
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+}
