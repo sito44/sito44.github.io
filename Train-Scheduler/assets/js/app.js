@@ -17,16 +17,17 @@ $(function() {
         event.preventDefault();
 
 
-        var trainName = $("#trainName").val().trim();
-        var destination = $("#destination").val().trim();
-        var firstTrainTime = $("#firstTrainTime").val().trim();
-        var frequency = $("#frequency").val().trim();
+        let trainName = $("#trainName").val().trim();
+        let destination = $("#destination").val().trim();
+        let firstTrainTime = $("#firstTrainTime").val().trim();
+        let frequency = $("#frequency").val().trim();
 
-        var trainUpdate = {
-            name: trainName,
-            email: destination,
+        let trainUpdate = {
+            tName: trainName,
+            endLocation: destination,
             firstTrainTime: firstTrainTime,
-            frequency: frequency
+            frequency: frequency,
+            nextTime: 0
         };
 
         database.ref().push(trainUpdate);
@@ -39,11 +40,25 @@ $(function() {
     });
 
     database.ref().on("child_added", function(snap) {
-        var name = snap.val().name;
-        var email = snap.val().email;
-        var firstTrainTime = snap.val().firstTrainTime;
-        var frequency = snap.val().frequency;
-        $("#trainTable").append("<tr><td>" + name + "</td><td>" + email + "</td><td>" +
-            firstTrainTime + "</td><td>" + frequency + "</td></tr>");
+    	let k = snap.key;
+    	console.log(k);
+        let tName = snap.val().tName;
+        let endLocation = snap.val().endLocation;
+        let firstTrainTime = snap.val().firstTrainTime;
+        let frequency = snap.val().frequency;
+        let nextArrival = parseInt(firstTrainTime) + parseInt(frequency);
+        let naString = nextArrival.toString();
+        database.ref(k).update({
+        	nextTime: naString
+        });
+        let nA = snap.val().nextTime;
+        /*firstTrainTime = moment(firstTrainTime, "hmm").format("LT");*/
+        
+        let naTime = moment(nA, "hmm").format("LT");
+        console.log(nextArrival);
+
+
+        $("#trainTable").append("<tr><td>" + tName + "</td><td>" + endLocation + "</td><td>" +
+            frequency + "</td><td>" + naTime + "</td></tr>");
     });
 });
