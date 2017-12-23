@@ -12,22 +12,44 @@ $(function() {
     firebase.initializeApp(config);
 
     var database = firebase.database();
+    var clockRunning = false;
+    var clockContainer = $('#clock');
+    var currentTime;
+    var nowTimeDifference;
+    var timeRemainder;
+    var minsToNextArrival;
+    var nextTrainTime;
+
+
+
+    clock();
+    // clock function for future realtime minutes away update
+    function clock() {
+        if (!clockRunning) {
+
+            currentTime = setInterval(clock, 1000);
+            clockRunning = true;
+        }
+        clockContainer.empty();
+        var t = moment().format('LT');
+        clockContainer.text(t);
+
+    }
 
     $('#addTrain').on("click", function(event) {
         event.preventDefault();
 
 
-        let trainName = $("#trainName").val().trim();
-        let destination = $("#destination").val().trim();
-        let firstTrainTime = $("#firstTrainTime").val().trim();
-        let frequency = $("#frequency").val().trim();
+        var trainName = $("#trainName").val().trim();
+        var destination = $("#destination").val().trim();
+        var firstTrainTime = $("#firstTrainTime").val().trim();
+        var frequency = $("#frequency").val().trim();
 
-        let trainUpdate = {
+        var trainUpdate = {
             tName: trainName,
             endLocation: destination,
             firstTrainTime: firstTrainTime,
-            frequency: frequency,
-            nextTime: 0
+            frequency: frequency
         };
 
         database.ref().push(trainUpdate);
@@ -40,25 +62,25 @@ $(function() {
     });
 
     database.ref().on("child_added", function(snap) {
-    	let k = snap.key;
-    	console.log(k);
-        let tName = snap.val().tName;
-        let endLocation = snap.val().endLocation;
-        let firstTrainTime = snap.val().firstTrainTime;
-        let frequency = snap.val().frequency;
-        let nextArrival = parseInt(firstTrainTime) + parseInt(frequency);
-        let naString = nextArrival.toString();
-        database.ref(k).update({
-        	nextTime: naString
-        });
-        let nA = snap.val().nextTime;
-        /*firstTrainTime = moment(firstTrainTime, "hmm").format("LT");*/
-        
-        let naTime = moment(nA, "hmm").format("LT");
-        console.log(nextArrival);
+        var k = snap.key;
+        var tName = snap.val().tName;
+        var endLocation = snap.val().endLocation;
+        var firstTrainTime = snap.val().firstTrainTime;
+        var frequency = snap.val().frequency;
 
+        nowTimeDifference = moment().diff(moment.unix(snap.val().firstTrainTime), "minutes");
+        console.log(nowTimeDifference);
+
+        timeRemainder = nowTimeDifference % frequency;
+        console.log(timeRemainder);
+
+        minsToNextArrival = frequency - timeRemainder;
+        console.log(minsToNextArrival);
+
+        nextTrainTime = moment().add(minsToNextArrival, "m").format("hh:mm A");
+        console.log(nextTrainTime);
 
         $("#trainTable").append("<tr><td>" + tName + "</td><td>" + endLocation + "</td><td>" +
-            frequency + "</td><td>" + naTime + "</td></tr>");
+            frequency + " min</td><td>" + nextTrainTime + "</td><td id='mtna'>" + minsToNextArrival + "</td></tr>");
     });
 });
