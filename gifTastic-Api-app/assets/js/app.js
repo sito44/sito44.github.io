@@ -27,7 +27,7 @@ $(function() {
 
             api_key: 'iOM9JW08IZGUoafA81f21vLOld9Jrruy',
             q: $(this).text(),
-            limit: 10,
+            limit: 25,
             r: 'rating'
         };
 
