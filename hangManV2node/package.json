@@ -1,0 +1,14 @@
+{
+  "name": "hangmanv2node",
+  "version": "1.0.0",
+  "description": "node hangman game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "andre holguin",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^5.0.1"
+  }
+}
