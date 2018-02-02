@@ -12,14 +12,14 @@ function Word(string) {
             return l.guessPrint();
         });
         let strg = strgAry.join('');
-        console.log(strg);
+        return strg;
     }
     this.userGuess = function (guess) {
         letterArray.forEach(letterArray.guessChecker(guess));
     }
 }
 const zoo = new Word('zoo');
-console.log(zoo);
-console.log(zoo.letterArray);
+/* console.log(zoo);
+console.log(zoo.letterArray); */
 console.log(zoo.toString());
 module.exports.Word = Word;
