@@ -1,0 +1,16 @@
+{
+  "name": "bamazon-mysql-db-app",
+  "version": "1.0.0",
+  "description": "online retail store app using node.js and mysql DB.",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andre Holguin",
+  "license": "ISC",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^5.1.0",
+    "mysql": "^2.15.0"
+  }
+}
