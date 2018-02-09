@@ -17,6 +17,7 @@ connection.connect(function (err) {
 });
 
 function managerPrompt() {
+    console.log('--- CONTROL + C TO END INVENTORY APPLICATION ---');
     inquirer.prompt([{
             name: 'managerTasks',
             message: 'Choose an option \n \n',
@@ -42,7 +43,7 @@ function managerPrompt() {
                 addToInv();
                 break;
             case 'Add New Product':
-
+                addNewProduct();
                 break;
         }
     });
@@ -57,6 +58,7 @@ function viewProducts() {
                 throw err;
             }
             console.table('Bamazon Products for Sale', res);
+            managerPrompt();
         });
 }
 
@@ -67,6 +69,7 @@ function viewLowInv() {
                 throw err;
             }
             console.table('Bamazon Low Inventory', res);
+            managerPrompt();
         });
 }
 
@@ -102,11 +105,50 @@ function addToInv() {
                         throw err;
                     }
                     console.table('Updated Inventory', res);
-                    connection.end();
+                    console.log(`${quant} added to item stock`);
                 });
+                managerPrompt();
         });
 }
 
 function addNewProduct() {
+    inquirer.prompt([
+    {
+        name: 'newProductName',
+        message: 'Enter your new product name',
+        type: 'input'
+    },
+    {
+        name: 'departmentName',
+        message: 'Enter the department name for the new product',
+        type: 'input'
+    },
+    {
+        name: 'productPrice',
+        message: 'set product price',
+        type: 'input'
+    },
+    {
+        name:'stockQuantity',
+        message: 'Order initial stock',
+        type: 'input'
+    }
+    ]).then(function(answers){
+        let productName = answers.newProductName;
+        let departmentName = answers.departmentName;
+        let productPrice = parseInt(answers.productPrice);
+        let stockQuantity = parseInt(answers.stockQuantity);
+        console.log(productName);
 
+        connection.query(`INSERT INTO products (product_name, department_name, price, stock_quantity) VALUES (${'"' + productName + '"'}, ${'"' + departmentName + '"'}, ${productPrice}, ${stockQuantity})`,
+            function (err, res) {
+                if (err) {
+                    throw err;
+                    console.log(err);
+                }
+                console.table('Updated Inventory', res);
+                viewProducts();
+            });
+            managerPrompt();
+    });
 }
