@@ -138,7 +138,6 @@ function addNewProduct() {
         let departmentName = answers.departmentName;
         let productPrice = parseInt(answers.productPrice);
         let stockQuantity = parseInt(answers.stockQuantity);
-        console.log(productName);
 
         connection.query(`INSERT INTO products (product_name, department_name, price, stock_quantity) VALUES (${'"' + productName + '"'}, ${'"' + departmentName + '"'}, ${productPrice}, ${stockQuantity})`,
             function (err, res) {
