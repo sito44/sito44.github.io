@@ -1,19 +1,19 @@
-
 'use strict';
 var techWords = [
-	'switch', 
-	'functions', 
-	'objects', 
-	'operators', 
-	'booleans', 
-	'hoisting', 
-	'prototypes', 
-	'parameters', 
-	'methods', 
-	'recursion', 
-	'closures'];
+	'switch',
+	'functions',
+	'objects',
+	'operators',
+	'booleans',
+	'hoisting',
+	'prototypes',
+	'parameters',
+	'methods',
+	'recursion',
+	'closures'
+];
 var win = 0;
-var turn = 7;
+var turn = 6;
 var pointCondition;
 var currentWord = randomWordGenerator();
 var totalUnderscore = [];
@@ -27,13 +27,13 @@ console.log(underScoreGenerator(currentWord));
 
 
 
-document.onkeyup = function(event) {
-        letter = event.key;
-        console.log(letter);
-        console.log(findIndices(currentWord));
-        letterCheckerAndPrint(letter);
-         
-      };
+document.onkeyup = function (event) {
+	letter = event.key;
+	console.log(letter);
+	console.log(findIndices(currentWord));
+	letterCheckerAndPrint(letter);
+
+};
 
 function $(id) {
 	return document.getElementById(id);
@@ -46,68 +46,61 @@ function randomWordGenerator() {
 }
 
 function underScoreGenerator(currentWord) {
-		var underScore = '_ ';
-		var multiple = currentWord.length;
-		for (var i = 0; i < multiple; i++) {
-			totalUnderscore.push(underScore);
-		}
+	var underScore = '_ ';
+	var multiple = currentWord.length;
+	for (var i = 0; i < multiple; i++) {
+		totalUnderscore.push(underScore);
+	}
 
-		printToScreen();
+	printToScreen();
 }
 
 function findIndices(indicesInWord) {
-		indices = [];
-	for(var i = 0; i < indicesInWord.length; i++) {
-    	if (indicesInWord[i] === letter) indices.push(i);
-    }
-    return indices;
+	indices = [];
+	for (var i = 0; i < indicesInWord.length; i++) {
+		if (indicesInWord[i] === letter) indices.push(i);
+	}
+	return indices;
 }
 
 
-function printToScreen(z)	{
+function printToScreen(z) {
+	printed = totalUnderscore.join(' ');
+	$('hangWord').textContent = printed;
+
+	if (z === true) {
 		printed = totalUnderscore.join(' ');
 		$('hangWord').textContent = printed;
 
-			if (z === true) {
-	 			printed = totalUnderscore.join(' ');
-				$('hangWord').textContent = printed;
-				
-			} else if (z === false){
-				turn -= 1;
-				$('turns').textContent = turn;
-			} else if (printed == currentWord) {
-				win += 1;
-				$('wins').textContent = win;
-			}
+	} else if (z === false) {
+		turn -= 1;
+		$('turns').textContent = turn;
+	} else if (printed == currentWord) {
+		win += 1;
+		$('wins').textContent = win;
+	}
 }
 
 function letterCheckerAndPrint(x) {
 
-			var found = false;	
-			pointCondition = found;
-	
+	var found = false;
+	/* pointCondition = found; */
+
 	for (var w = 0; w < currentWord.length; w++) {
 
 		if (currentWord[w] === x && found === false) {
-			
-			found = true;
+
 			for (var r in indices) {
 				delete totalUnderscore[indices[r]];
 				totalUnderscore[indices[r]] = x;
 				console.log(r);
 			}
-				
-				console.log(totalUnderscore);
-				
-			
-		} else if (currentWord[w] !== x && found === true) {
-			
-			found = false;
-		}
-			
+			found = true;
 
+			console.log(totalUnderscore);
+		} 
 	}
-				printToScreen(pointCondition);
+	printToScreen(found);
 }
 
 
@@ -155,10 +148,3 @@ var gameObject = {
 }
 
 */
-
-
-
-
-
-
-			
