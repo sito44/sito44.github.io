@@ -1,5 +1,5 @@
 'use strict';
-var techWords = [
+let techWords = [
 	'switch',
 	'functions',
 	'objects',
@@ -12,14 +12,14 @@ var techWords = [
 	'recursion',
 	'closures'
 ];
-var win = 0;
-var turn = 6;
-var pointCondition;
-var currentWord = randomWordGenerator();
-var totalUnderscore = [];
-var printed;
-var letter;
-var indices;
+let win = 0;
+let turn = 6;
+let pointCondition;
+let currentWord = randomWordGenerator();
+let totalUnderscore = [];
+let printed;
+let letter;
+let indices;
 
 
 console.log(currentWord);
@@ -41,14 +41,14 @@ function $(id) {
 
 
 function randomWordGenerator() {
-	var RN = techWords[Math.floor(Math.random() * techWords.length)];
+	let RN = techWords[Math.floor(Math.random() * techWords.length)];
 	return RN;
 }
 
 function underScoreGenerator(currentWord) {
-	var underScore = '_ ';
-	var multiple = currentWord.length;
-	for (var i = 0; i < multiple; i++) {
+	let underScore = '_ ';
+	let multiple = currentWord.length;
+	for (let i = 0; i < multiple; i++) {
 		totalUnderscore.push(underScore);
 	}
 
@@ -57,7 +57,7 @@ function underScoreGenerator(currentWord) {
 
 function findIndices(indicesInWord) {
 	indices = [];
-	for (var i = 0; i < indicesInWord.length; i++) {
+	for (let i = 0; i < indicesInWord.length; i++) {
 		if (indicesInWord[i] === letter) indices.push(i);
 	}
 	return indices;
@@ -66,31 +66,34 @@ function findIndices(indicesInWord) {
 
 function printToScreen(z) {
 	printed = totalUnderscore.join(' ');
+	let wordEval = totalUnderscore.join('');
+	console.log(printed);
 	$('hangWord').textContent = printed;
 
-	if (z === true) {
+
+	if (wordEval === currentWord) {
+		win += 1;
+		$('wins').textContent = win;
+	} else if (z === true) {
 		printed = totalUnderscore.join(' ');
 		$('hangWord').textContent = printed;
 
 	} else if (z === false) {
 		turn -= 1;
 		$('turns').textContent = turn;
-	} else if (printed == currentWord) {
-		win += 1;
-		$('wins').textContent = win;
 	}
 }
 
 function letterCheckerAndPrint(x) {
 
-	var found = false;
+	let found = false;
 	/* pointCondition = found; */
 
-	for (var w = 0; w < currentWord.length; w++) {
+	for (let w = 0; w < currentWord.length; w++) {
 
 		if (currentWord[w] === x && found === false) {
 
-			for (var r in indices) {
+			for (let r in indices) {
 				delete totalUnderscore[indices[r]];
 				totalUnderscore[indices[r]] = x;
 				console.log(r);
@@ -98,7 +101,7 @@ function letterCheckerAndPrint(x) {
 			found = true;
 
 			console.log(totalUnderscore);
-		} 
+		}
 	}
 	printToScreen(found);
 }
@@ -110,7 +113,7 @@ console.log(currentWord);
 
 Psuedo code
 
------switch statment changes between hangman images when turn variable decreases.
+-----switch statment changes between hangman images when turn letiable decreases.
 
 switch(turn) {
 	case 0:
@@ -125,9 +128,9 @@ switch(turn) {
 
 -----add pushed keys to the UI
 
-var usedLetters = [];
+let usedLetters = [];
 usedLetters.push(letter);
-var usedLetterElement = $('hangLetters');
+let usedLetterElement = $('hangLetters');
 usedLetterElement.textContent = usedLetters.
 
 
@@ -143,7 +146,7 @@ if (currentWord === printed) {
 
 
 
-var gameObject = {
+let gameObject = {
 	....all functions of game
 }
 
