@@ -20,6 +20,7 @@ let totalUnderscore = [];
 let printed;
 let letter;
 let indices;
+let letterTrackerArray = [];
 
 
 console.log(currentWord);
@@ -31,6 +32,8 @@ document.onkeyup = function (event) {
 	letter = event.key;
 	console.log(letter);
 	console.log(findIndices(currentWord));
+	console.log(letterTrackerArray.length);
+	letterTracker(letter);
 	letterCheckerAndPrint(letter);
 
 };
@@ -82,6 +85,14 @@ function printToScreen(z) {
 		turn -= 1;
 		$('turns').textContent = turn;
 	}
+
+	if (letterTrackerArray[0] === undefined) {
+		return;
+	} else {
+		let usedLetters = letterTrackerArray.join(' ');
+		console.log(usedLetters);
+		$('hangLetters').textContent = usedLetters;
+	}
 }
 
 function letterCheckerAndPrint(x) {
@@ -108,6 +119,24 @@ function letterCheckerAndPrint(x) {
 
 
 console.log(currentWord);
+
+
+function letterTracker(letter) {
+	if (letterTrackerArray.length === 0) {
+		letterTrackerArray.push(letter);
+	}
+	let letterInArray = letterTrackerArray.find(l => {
+		if (l === letter) {
+			return true;
+		}
+	});
+	if (letterInArray) {
+		return;
+	} else {
+		letterTrackerArray.push(letter);
+	}
+
+}
 
 /*
 
