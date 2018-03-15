@@ -13,11 +13,12 @@ main {
 	
 	font-size: 3em;
 }
-main:nth-child(2) {
-	
-}
+
 section {
 	background-color: white;
 	opacity: .8;
 	border: 3px dashed black;
+}
+#hangman {
+	padding: 8%;
 }
