@@ -14,7 +14,6 @@ let techWords = [
 ];
 let win = 0;
 let turn = 6;
-let pointCondition;
 let currentWord = randomWordGenerator();
 let totalUnderscore = [];
 let printed;
@@ -26,7 +25,7 @@ let letterTrackerArray = [];
 console.log(currentWord);
 console.log(underScoreGenerator(currentWord));
 
-
+imageChange();
 
 document.onkeyup = function (event) {
 	letter = event.key;
@@ -35,6 +34,7 @@ document.onkeyup = function (event) {
 	console.log(letterTrackerArray.length);
 	letterTracker(letter);
 	letterCheckerAndPrint(letter);
+	imageChange();
 
 };
 
@@ -98,7 +98,7 @@ function printToScreen(z) {
 function letterCheckerAndPrint(x) {
 
 	let found = false;
-	/* pointCondition = found; */
+
 
 	for (let w = 0; w < currentWord.length; w++) {
 
@@ -138,45 +138,30 @@ function letterTracker(letter) {
 
 }
 
-/*
+function imageChange() {
+	switch (turn) {
+		case 6:
+			$('hangman').innerHTML = '<img src="./assets/images/Hangman_game0.png">';
+			break;
+		case 5:
+			$('hangman').innerHTML = '<img src="./assets/images/Hangman_game1.png">';
+			break;
+		case 4:
+			$('hangman').innerHTML = '<img src="./assets/images/Hangman_game2.png">';
+			break;
+		case 3:
+			$('hangman').innerHTML = '<img src="./assets/images/Hangman_game3.png">';
+			break;
+		case 2:
+			$('hangman').innerHTML = '<img src="./assets/images/Hangman_game4.png">';
+			break;
+		case 1:
+			$('hangman').innerHTML = '<img src="./assets/images/Hangman_game5.png">';
+			break;
+		case 0:
+			$('hangman').innerHTML = '<img src="./assets/images/Hangman_game6.png">';
+			break;
 
-Psuedo code
 
------switch statment changes between hangman images when turn letiable decreases.
-
-switch(turn) {
-	case 0:
-			$('hangman').innerHTML = '<img src="./assets/images/hangman.jpg" alt="hangman">';
-		break;
-	case 1:
-			$('hangman').innerHTML = '<img src="./assets/images/hangman.jpg" alt="hangman">';
-		break;
-
-		etc....	
+	}
 }
-
------add pushed keys to the UI
-
-let usedLetters = [];
-usedLetters.push(letter);
-let usedLetterElement = $('hangLetters');
-usedLetterElement.textContent = usedLetters.
-
-
-------win and lose logic
-
-if (currentWord === printed) {
-	win += 1;
-	randomWordGenerator();
-} else if (turns === 0){
-	alert('you lose');
-	refreshBrowser();
-}
-
-
-
-let gameObject = {
-	....all functions of game
-}
-
-*/
