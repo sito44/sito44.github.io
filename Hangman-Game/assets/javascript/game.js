@@ -12,20 +12,37 @@ let techWords = [
 	'recursion',
 	'closures'
 ];
+
 let win = 0;
-let turn = 6;
-let currentWord = randomWordGenerator();
-let totalUnderscore = [];
+let turn;
+let currentWord;
+let totalUnderscore;
 let printed;
 let letter;
 let indices;
-let letterTrackerArray = [];
+let letterTrackerArray;
 
+function initialize() {
+	
+	turn = 6;
+	currentWord = randomWordGenerator();
+	totalUnderscore = [];
+	printed;
+	letter;
+	indices;
+	letterTrackerArray = [];
 
-console.log(currentWord);
-console.log(underScoreGenerator(currentWord));
+	imageChange();
+	underScoreGenerator(currentWord);
+	$('wins').textContent = win;
+	$('hangWord').textContent = totalUnderscore.join(' ');
+	$('hangLetters').textContent = "";
+	$('turns').textContent = turn;
+	
+}
 
-imageChange();
+initialize();
+
 
 document.onkeyup = function (event) {
 	letter = event.key;
@@ -77,6 +94,7 @@ function printToScreen(z) {
 	if (wordEval === currentWord) {
 		win += 1;
 		$('wins').textContent = win;
+		initialize();
 	} else if (z === true) {
 		printed = totalUnderscore.join(' ');
 		$('hangWord').textContent = printed;
@@ -84,6 +102,10 @@ function printToScreen(z) {
 	} else if (z === false) {
 		turn -= 1;
 		$('turns').textContent = turn;
+		if(turn === 0 ){
+			 initialize();
+
+			};
 	}
 
 	if (letterTrackerArray[0] === undefined) {
@@ -164,4 +186,9 @@ function imageChange() {
 
 
 	}
+}
+
+function modal() {
+	
+	
 }
