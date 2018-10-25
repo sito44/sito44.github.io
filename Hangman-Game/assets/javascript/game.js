@@ -357,6 +357,6 @@ init();</code></pre>`;
 
 // ------------------- Event Delegation
 
-$(document).on('click', '.closeButton', function () {
+$(document).on('keyup touchend', '.closeButton', function () {
 	$('.modalOverlay').removeClass('showModal');
 });
