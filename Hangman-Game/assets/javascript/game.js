@@ -359,4 +359,11 @@ init();</code></pre>`;
 
 $(document).on('click', '.closeButton', function () {
 	$('.modalOverlay').removeClass('showModal');
+	$('.mobileKeyboard').val('');
 });
+
+$(document).on('keyup touchend', function () {
+	$('.mobileKeyboard').focus();
+});
+
+
