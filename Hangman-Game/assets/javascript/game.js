@@ -72,7 +72,7 @@ $(function () {
 	document.onkeydown = function (event) {
 		if (turn <= 0) return;
 		letter = event.key;
-		if(letter === undefined) {
+		if(letter === 'Unidentified') {
 			letter = $('.mobileKeyboard').val();
 			
 			findIndices(currentWord);
