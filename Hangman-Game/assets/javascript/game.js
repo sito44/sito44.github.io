@@ -80,13 +80,14 @@ $(function () {
 			letterCheckerAndPrint(letter);
 			imageChange();
 			$('.mobileKeyboard').val('');
-		}
+		} else {
 		
 		findIndices(currentWord);
 		letterTracker(letter);
 		letterCheckerAndPrint(letter);
 		imageChange();
 		$('.mobileKeyboard').val('');
+		}
 
 	};
 
