@@ -59,6 +59,7 @@ $(function () {
 		$('#hangWord').text(totalUnderscore.join(' '));
 		$('#hangLetters').text("");
 		$('#turns').text(turn);
+		$('.mobileKeyboard').val('');
 
 	}
 
@@ -68,22 +69,20 @@ $(function () {
 
 	// -------------------------- Key Binding
 
-	document.onkeyup = function (event) {
+	document.onkeydown = function (event) {
 		if (turn <= 0) return;
 		letter = event.key;
 		if(letter === undefined) {
 			letter = $('.mobileKeyboard').val();
-			console.log(letter);
-			console.log(findIndices(currentWord));
-			console.log(letterTrackerArray.length);
+			
+			findIndices(currentWord);
 			letterTracker(letter);
 			letterCheckerAndPrint(letter);
 			imageChange();
 			$('.mobileKeyboard').val('');
 		}
-		console.log(letter);
-		console.log(findIndices(currentWord));
-		console.log(letterTrackerArray.length);
+		
+		findIndices(currentWord);
 		letterTracker(letter);
 		letterCheckerAndPrint(letter);
 		imageChange();
@@ -133,19 +132,18 @@ $(function () {
 				for (let r in indices) {
 					delete totalUnderscore[indices[r]];
 					totalUnderscore[indices[r]] = x;
-					console.log(r);
 				}
 				found = true;
-				console.log(totalUnderscore);
 			}
 		}
+
 		printToScreen(found);
 	}
 
 	function printToScreen(z) {
 		printed = totalUnderscore.join(' ');
 		let wordEval = totalUnderscore.join('');
-		console.log(printed);
+		
 		$('#hangWord').text(printed);
 
 		if (wordEval === currentWord) {
@@ -174,8 +172,8 @@ $(function () {
 		if (letterTrackerArray[0] === undefined) {
 			return;
 		} else {
+
 			let usedLetters = letterTrackerArray.join(' ');
-			console.log(usedLetters);
 			$('#hangLetters').text(usedLetters);
 		}
 	}
@@ -372,7 +370,7 @@ $(document).on('click', '.closeButton', function () {
 	$('.modalOverlay').removeClass('showModal');
 });
 
-$(document).on('keyup touchend', function () {
+$(document).on('keydown touchend', function () {
 	$('.mobileKeyboard').focus();
 });
 
