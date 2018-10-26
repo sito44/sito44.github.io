@@ -71,12 +71,23 @@ $(function () {
 	document.onkeyup = function (event) {
 		if (turn <= 0) return;
 		letter = event.key;
+		if(letter === undefined) {
+			letter = $('.mobileKeyboard').val();
+			console.log(letter);
+			console.log(findIndices(currentWord));
+			console.log(letterTrackerArray.length);
+			letterTracker(letter);
+			letterCheckerAndPrint(letter);
+			imageChange();
+			$('.mobileKeyboard').val('');
+		}
 		console.log(letter);
 		console.log(findIndices(currentWord));
 		console.log(letterTrackerArray.length);
 		letterTracker(letter);
 		letterCheckerAndPrint(letter);
 		imageChange();
+		$('.mobileKeyboard').val('');
 
 	};
 
@@ -359,7 +370,6 @@ init();</code></pre>`;
 
 $(document).on('click', '.closeButton', function () {
 	$('.modalOverlay').removeClass('showModal');
-	$('.mobileKeyboard').val('');
 });
 
 $(document).on('keyup touchend', function () {
