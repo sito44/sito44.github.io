@@ -54,6 +54,9 @@ section {
 	margin: auto;
 	border-radius: 10px;
 }
+.mobileKeyboard {
+	visibility: hidden;
+}
 
 .closeButton {
 	color: white;
