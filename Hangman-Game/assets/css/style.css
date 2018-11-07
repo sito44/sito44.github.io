@@ -1,7 +1,10 @@
 body {
 	width: 100%;
 	font-family: monospace;
-	background-image: url('http://www.wallpapersin4k.org/wp-content/uploads/2017/04/White-Theme-Wallpaper-1.jpg');
+	background-image: url('http://3.bp.blogspot.com/-cxiwAZNVkN0/WJwolNJT8lI/AAAAAAAADT4/AEHLtU9SHKcVHJhZczd5orz2CIHyvFC1wCHM/s1600/white-glass-3d-wallpapers-free.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 header {
@@ -14,7 +17,7 @@ h3 {
 
 main {
 
-	font-size: 3em;
+	font-size: 2.8em;
 }
 
 section {
