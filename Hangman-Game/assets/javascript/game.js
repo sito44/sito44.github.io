@@ -232,7 +232,7 @@ $(function () {
 
 });
 
-// Using String Literals to insert content
+// Using Template Literals to insert content and keep correct spacing
 function messageBank(string) {
 	let result;
 	switch (string) {
