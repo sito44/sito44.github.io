@@ -68,7 +68,7 @@ $(function () {
 
 	// -------------------------- Key Binding
 
-	document.onkeydown = function (event) {
+	document.onkeyup = function (event) {
 		if (turn <= 0) return;
 		letter = event.key;
 
