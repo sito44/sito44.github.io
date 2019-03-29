@@ -42,6 +42,7 @@ section {
 	background: rgb(0, 0, 0, 0);
 	transition: all .1s ease-in-out;
 	padding: 10% 4%;
+	height: 1200px;
 }
 
 .showModal {
@@ -55,6 +56,7 @@ section {
 	background-color: white;
 	width: 90%;
 	margin: auto;
+	transform: translateY(30%);
 	border-radius: 10px;
 }
 
@@ -62,7 +64,6 @@ section {
 	color: white;
 	background-color: transparent;
 	border: none;
-
 	font-size: 2rem;
 	padding: .6% 2%;
 	position: absolute;

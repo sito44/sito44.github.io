@@ -59,6 +59,7 @@ $(function () {
 		$('#hangWord').text(totalUnderscore.join(' '));
 		$('#hangLetters').text("");
 		$('#turns').text(turn);
+		
 
 	}
 
@@ -71,9 +72,7 @@ $(function () {
 	document.onkeyup = function (event) {
 		if (turn <= 0) return;
 		letter = event.key;
-		console.log(letter);
-		console.log(findIndices(currentWord));
-		console.log(letterTrackerArray.length);
+		findIndices(currentWord);
 		letterTracker(letter);
 		letterCheckerAndPrint(letter);
 		imageChange();
@@ -122,19 +121,18 @@ $(function () {
 				for (let r in indices) {
 					delete totalUnderscore[indices[r]];
 					totalUnderscore[indices[r]] = x;
-					console.log(r);
 				}
 				found = true;
-				console.log(totalUnderscore);
 			}
 		}
+
 		printToScreen(found);
 	}
 
 	function printToScreen(z) {
 		printed = totalUnderscore.join(' ');
 		let wordEval = totalUnderscore.join('');
-		console.log(printed);
+		
 		$('#hangWord').text(printed);
 
 		if (wordEval === currentWord) {
@@ -163,8 +161,8 @@ $(function () {
 		if (letterTrackerArray[0] === undefined) {
 			return;
 		} else {
+
 			let usedLetters = letterTrackerArray.join(' ');
-			console.log(usedLetters);
 			$('#hangLetters').text(usedLetters);
 		}
 	}
@@ -361,3 +359,7 @@ init();</code></pre>`;
 $(document).on('click', '.closeButton', function () {
 	$('.modalOverlay').removeClass('showModal');
 });
+
+
+
+
