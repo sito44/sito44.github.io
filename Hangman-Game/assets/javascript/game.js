@@ -59,7 +59,6 @@ $(function () {
 		$('#hangWord').text(totalUnderscore.join(' '));
 		$('#hangLetters').text("");
 		$('#turns').text(turn);
-		
 
 	}
 
@@ -69,14 +68,15 @@ $(function () {
 
 	// -------------------------- Key Binding
 
-	document.onkeyup = function (event) {
+	document.onkeydown = function (event) {
 		if (turn <= 0) return;
 		letter = event.key;
+
 		findIndices(currentWord);
 		letterTracker(letter);
 		letterCheckerAndPrint(letter);
 		imageChange();
-
+		
 	};
 
 	// ---------------------------
@@ -359,7 +359,3 @@ init();</code></pre>`;
 $(document).on('click', '.closeButton', function () {
 	$('.modalOverlay').removeClass('showModal');
 });
-
-
-
-
