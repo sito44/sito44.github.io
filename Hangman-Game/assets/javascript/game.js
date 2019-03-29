@@ -59,7 +59,6 @@ $(function () {
 		$('#hangWord').text(totalUnderscore.join(' '));
 		$('#hangLetters').text("");
 		$('#turns').text(turn);
-		$('.mobileKeyboard').val('');
 
 	}
 
@@ -72,23 +71,12 @@ $(function () {
 	document.onkeydown = function (event) {
 		if (turn <= 0) return;
 		letter = event.key;
-		if(letter === 'Unidentified') {
-			letter = $('.mobileKeyboard').val();
-			
-			findIndices(currentWord);
-			letterTracker(letter);
-			letterCheckerAndPrint(letter);
-			imageChange();
-			$('.mobileKeyboard').val('');
-		} else {
-		
+
 		findIndices(currentWord);
 		letterTracker(letter);
 		letterCheckerAndPrint(letter);
 		imageChange();
-		$('.mobileKeyboard').val('');
-		}
-
+		
 	};
 
 	// ---------------------------
@@ -363,6 +351,7 @@ init();</code></pre>`;
 	}
 	return result;
 }
+
 // ------------------------------------
 
 // ------------------- Event Delegation
@@ -370,9 +359,3 @@ init();</code></pre>`;
 $(document).on('click', '.closeButton', function () {
 	$('.modalOverlay').removeClass('showModal');
 });
-
-$(document).on('keydown touchend', function () {
-	$('.mobileKeyboard').focus();
-});
-
-
